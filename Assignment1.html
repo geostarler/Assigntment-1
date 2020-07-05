@@ -1,0 +1,34 @@
+<p id="count">Hello react native</p>
+<input type="number" id="inputNumber" />
+<button id="guessButton" onclick="handleGuessBtnCLick()">GUESS</button>
+<h2 id="result"></h2>
+<h2 id="passGuess"></h2>
+<script>
+    const correctNumber = 10;
+    const passGuess = [];
+    let passGuessStr = "";
+    let count = 10;
+
+    function handleGuessBtnCLick() {
+        if (count <= 0) return;
+        const inputValue = parseInt(document.getElementById("inputNumber")
+            .value);
+        if (inputValue < correctNumber) {
+            document.getElementById("result").innerHTML =
+                "Sorry your guess is low ";
+        }
+        if (inputValue > correctNumber) {
+            document.getElementById("result").innerHTML =
+                "Sorry your guess is high ";
+        }
+        if (inputValue === correctNumber) {
+            document.getElementById("result").innerHTML = "Congratulation ";
+        }
+        passGuessStr = passGuessStr + `${inputValue}` + "<br>"
+        document.getElementById('passGuess').innerHTML = passGuessStr;
+        count--;
+        document.getElementById("count").innerHTML =
+            `You have ${count} guesses left`
+        console.log('The input number is', inputValue);
+    }
+</script>
